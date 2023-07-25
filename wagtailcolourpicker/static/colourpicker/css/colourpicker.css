@@ -1,4 +1,13 @@
- form #id_colour li {
+form #id_colour {
+     display: flex;
+     flex-wrap: wrap;
+}
+
+form #id_colour div {
+     flex: 1 1 auto;
+}
+
+form #id_colour li {
      display: inline-block;
      margin-right: 15px;
      margin-bottom: 5px;
