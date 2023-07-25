@@ -16,12 +16,32 @@ def register_admin_urls():
         path('wagtailcolourpicker/', include((urls, 'wagtailcolourpicker'))),
     ]
 
-# @hooks.register('insert_editor_css')
-# def editor_css():
-#     return format_html(
-#         '<link rel="stylesheet" href="{}">',
-#         static('colourpicker/css/colourpicker.css')
-#     )
+@hooks.register('insert_editor_css')
+def editor_css():
+    return """
+             form #id_colour li {
+             display: inline-block;
+             margin-right: 15px;
+             margin-bottom: 5px;
+         }
+         form #id_colour li label {
+             border: 1px solid rgba(0, 0, 0, .26);
+             border-radius: 1px;
+             cursor: pointer;
+             width: 60px;
+             height: 60px;
+         }
+         form #id_colour li input {
+             display: none;
+         }
+         form #id_colour li input:checked+label {
+             box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.40);
+         }
+        
+         .Draftail-ToolbarButton[name^="COLOUR_"] {
+             display: none;
+         }
+    """
     
 @hooks.register('insert_editor_js')
 def insert_editor_js():
@@ -56,9 +76,6 @@ def register_textcolour_feature(features):
                 'colourpicker/js/chooser.js',
                 'colourpicker/js/colourpicker.js',
             ],
-            css={
-                'all': ['colourpicker/css/colourpicker.css'],
-            }
         )
     )
 
