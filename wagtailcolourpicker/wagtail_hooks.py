@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from wagtail.admin.rich_text.editors.draftail import features as draftail_features
-from wagtail.core import hooks
+from wagtail import hooks
 
 from wagtailcolourpicker.conf import get_setting
 from wagtailcolourpicker.utils.colour import register_all_colour_features
@@ -17,7 +17,7 @@ def register_admin_urls():
     ]
 
 
-@hooks.register('insert_editor_js')
+@hooks.register('insert_global_admin_css')
 def insert_editor_js():
     js_includes = format_html(
         "<script>window.chooserUrls.colourChooser = '{0}';</script>",
