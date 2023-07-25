@@ -1,5 +1,5 @@
 <li>
 {% include "django/forms/widgets/input.html" %}
 <label style="background: {{ widget.label }}" {% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}></label>
-<div style="text-align: center;"><small> {{ widget.value }} : {{ widget.label }} </small></div>
+<div style="text-align: center;"><small> {{ widget.value }} : <br/> {{ widget.label }} </small></div>
 </li>
