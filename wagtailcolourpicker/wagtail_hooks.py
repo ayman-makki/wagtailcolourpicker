@@ -1,7 +1,7 @@
 from django.urls import reverse, path, include
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from wagtail.admin.rich_text.editors.draftail import features as draftail_features
 from wagtail import hooks
 
@@ -16,6 +16,13 @@ def register_admin_urls():
         path('wagtailcolourpicker/', include((urls, 'wagtailcolourpicker'))),
     ]
 
+@hooks.register('insert_editor_css')
+def editor_css():
+    return format_html(
+        '<link rel="stylesheet" href="{}">',
+        static('colourpicker/css/colourpicker.css')
+    )
+    
 @hooks.register('insert_editor_js')
 def insert_editor_js():
     js_includes = format_html(
@@ -49,6 +56,9 @@ def register_textcolour_feature(features):
                 'colourpicker/js/chooser.js',
                 'colourpicker/js/colourpicker.js',
             ],
+            css={
+                'all': ['colourpicker/css/colourpicker.css'],
+            }
         )
     )
 
