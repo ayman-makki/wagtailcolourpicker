@@ -16,8 +16,7 @@ def register_admin_urls():
         path('wagtailcolourpicker/', include((urls, 'wagtailcolourpicker'))),
     ]
 
-
-@hooks.register('insert_global_admin_css')
+@hooks.register('insert_editor_js')
 def insert_editor_js():
     js_includes = format_html(
         "<script>window.chooserUrls.colourChooser = '{0}';</script>",
@@ -50,9 +49,6 @@ def register_textcolour_feature(features):
                 'colourpicker/js/chooser.js',
                 'colourpicker/js/colourpicker.js',
             ],
-            css={
-                'all': ['colourpicker/css/colourpicker.css'],
-            }
         )
     )
 
