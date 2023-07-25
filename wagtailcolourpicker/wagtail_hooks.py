@@ -1,7 +1,7 @@
 from django.urls import reverse, path, include
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-
+from django.templatetags.static import static
 from wagtail.admin.rich_text.editors.draftail import features as draftail_features
 from wagtail import hooks
 
@@ -18,30 +18,10 @@ def register_admin_urls():
 
 @hooks.register('insert_editor_css')
 def editor_css():
-    return """
-         form #id_colour li {
-             display: inline-block;
-             margin-right: 15px;
-             margin-bottom: 5px;
-         }
-         form #id_colour li label {
-             border: 1px solid rgba(0, 0, 0, .26);
-             border-radius: 1px;
-             cursor: pointer;
-             width: 60px;
-             height: 60px;
-         }
-         form #id_colour li input {
-             display: none;
-         }
-         form #id_colour li input:checked+label {
-             box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.40);
-         }
-        
-         .Draftail-ToolbarButton[name^="COLOUR_"] {
-             display: none;
-         }
-    """
+    return format_html(
+        '<link rel="stylesheet" href="{}">',
+        static('colourpicker/css/colourpicker.css')
+    )
     
 @hooks.register('insert_editor_js')
 def insert_editor_js():
