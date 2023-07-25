@@ -10,7 +10,7 @@ class ColourRadioSelect(forms.widgets.RadioSelect):
 
 class ColourForm(forms.Form):
     colour = forms.ChoiceField(
-        label=_("Colours"),
+        label=_("Couleurs"),
         choices=get_colour_choices(),
         widget=ColourRadioSelect,
         required=False
