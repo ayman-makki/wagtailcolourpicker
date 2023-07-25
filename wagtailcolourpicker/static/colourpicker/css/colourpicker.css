@@ -4,6 +4,7 @@
      margin-bottom: 5px;
  }
  form #id_colour li label {
+     display: inline-block;
      border: 1px solid rgba(0, 0, 0, .26);
      border-radius: 1px;
      cursor: pointer;
