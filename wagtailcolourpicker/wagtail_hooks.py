@@ -19,7 +19,7 @@ def register_admin_urls():
 @hooks.register('insert_editor_css')
 def editor_css():
     return """
-             form #id_colour li {
+         form #id_colour li {
              display: inline-block;
              margin-right: 15px;
              margin-bottom: 5px;
