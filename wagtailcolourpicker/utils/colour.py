@@ -30,7 +30,7 @@ def register_color_feature(name, colour, features):
     control = {
         'type': type_,
         # 'icon': get_setting('ICON'),
-        'label': '💧',
+        'label': get_setting('ICON'),
         'description': " ".join([s.capitalize() for s in name.split("_")]),
         'style': {'color': colour}
     }
