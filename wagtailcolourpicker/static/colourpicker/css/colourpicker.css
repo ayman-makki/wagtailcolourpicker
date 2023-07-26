@@ -1,11 +1,13 @@
 form #id_colour {
      display: flex;
      flex-wrap: wrap;
+     justify-content: center;
+     gap: 20px;
 }
-
+/* 
 form #id_colour div {
      flex: 1 1 auto;
-}
+} */
 
 form #id_colour li {
      display: inline-block;
