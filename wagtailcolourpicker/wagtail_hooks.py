@@ -38,7 +38,7 @@ def editor_css():
 def register_textcolour_feature(features):
     # register all colour features
     register_all_colour_features(features)
-
+    print(reverse_lazy("wagtailcolourpicker:chooser"))
     # register the color picker
     feature_name = "textcolour"
     type_ = feature_name.upper()
