@@ -1,5 +1,5 @@
 // Object containing handlers for different modal states
-COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = {
+COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = (url) => {
   // Handler for the 'chooser' state
   chooser: function (modal, jsonData) {
     console.log(jsonData);
@@ -10,7 +10,7 @@ COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = {
 
       // Send AJAX request
       $.ajax({
-        url: this.action,
+        url: url,
         data: formdata,
         processData: false,
         contentType: false,
