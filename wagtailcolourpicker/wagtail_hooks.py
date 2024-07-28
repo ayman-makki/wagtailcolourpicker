@@ -9,54 +9,56 @@ from wagtailcolourpicker.conf import get_setting
 from wagtailcolourpicker.utils.colour import register_all_colour_features
 
 
-@hooks.register('register_admin_urls')
+@hooks.register("register_admin_urls")
 def register_admin_urls():
     from wagtailcolourpicker import urls
+
     return [
-        path('wagtailcolourpicker/', include((urls, 'wagtailcolourpicker'))),
+        path("wagtailcolourpicker/", include((urls, "wagtailcolourpicker"))),
     ]
 
-@hooks.register('insert_editor_css')
+
+@hooks.register("insert_global_admin_css")
 def editor_css():
     return format_html(
-        '<link rel="stylesheet" href="{}">',
-        static('colourpicker/css/colourpicker.css')
+        '<link rel="stylesheet" href="{}">', static("colourpicker/css/colourpicker.css")
     )
-    
-@hooks.register('insert_editor_js')
+
+
+@hooks.register("insert_editor_js")
 def insert_editor_js():
     js_includes = format_html(
         "<script>window.chooserUrls.colourChooser = '{0}';</script>",
-        reverse('wagtailcolourpicker:chooser')
+        reverse("wagtailcolourpicker:chooser"),
     )
     return js_includes
 
 
-@hooks.register('register_rich_text_features')
+@hooks.register("register_rich_text_features")
 def register_textcolour_feature(features):
     # register all colour features
     register_all_colour_features(features)
 
     # register the color picker
-    feature_name = 'textcolour'
+    feature_name = "textcolour"
     type_ = feature_name.upper()
 
     control = {
-        'type': type_,
-        'icon': get_setting('ICON'),
-        'description': _('Text Colour'),
+        "type": type_,
+        "icon": get_setting("ICON"),
+        "description": _("Text Colour"),
     }
 
     features.register_editor_plugin(
-        'draftail',
+        "draftail",
         feature_name,
         draftail_features.EntityFeature(
             control,
             js=[
-                'colourpicker/js/chooser.js',
-                'colourpicker/js/colourpicker.js',
+                "colourpicker/js/chooser.js",
+                "colourpicker/js/colourpicker.js",
             ],
-        )
+        ),
     )
 
     features.default_features.append(feature_name)
