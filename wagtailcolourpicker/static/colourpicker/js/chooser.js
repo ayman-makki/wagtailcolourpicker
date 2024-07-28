@@ -2,6 +2,7 @@
 COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = {
   // Handler for the 'chooser' state
   chooser: function (modal, jsonData) {
+    console.log(jsonData);
     // Add submit event listener to the colour form within the modal
     $("form.colour-form", modal.body).on("submit", function () {
       // Create FormData object from the submitted form
@@ -26,6 +27,8 @@ COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = {
 
   // Handler for the 'colour_chosen' state
   colour_chosen: function (modal, jsonData) {
+    console.log(jsonData);
+
     // Respond with 'colourChosen' event, passing toggled feature and all features
     modal.respond(
       "colourChosen",
