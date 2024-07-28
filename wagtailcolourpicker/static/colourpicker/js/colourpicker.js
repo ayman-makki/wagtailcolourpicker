@@ -13,10 +13,11 @@ class TextColourSource extends React.Component {
 
   componentDidMount() {
     console.log("mounted");
-    $(document.body).on("hidden.bs.modal", this.onClose);
+    console.log(this, this.props, chooserUrl, chooserUrls);
 
+    $(document.body).on("hidden.bs.modal", this.onClose);
     this.workflow = ModalWorkflow({
-      url: window.chooserUrls.colourChooser,
+      url: this.props.entityType.chooserUrls.colourChooser,
       onload: COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS,
       responses: {
         colourChosen: this.onChosen,

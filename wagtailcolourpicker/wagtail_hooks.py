@@ -25,13 +25,13 @@ def editor_css():
     )
 
 
-@hooks.register("insert_editor_js")
-def insert_editor_js():
-    js_includes = format_html(
-        "<script>window.chooserUrls.colourChooser = '{0}';</script>",
-        reverse("wagtailcolourpicker:chooser"),
-    )
-    return js_includes
+# @hooks.register("insert_editor_js")
+# def insert_editor_js():
+#     js_includes = format_html(
+#         "<script>window.chooserUrls.colourChooser = '{0}';</script>",
+#         reverse("wagtailcolourpicker:chooser"),
+#     )
+#     return js_includes
 
 
 @hooks.register("register_rich_text_features")
@@ -47,6 +47,7 @@ def register_textcolour_feature(features):
         "type": type_,
         "icon": get_setting("ICON"),
         "description": _("Text Colour"),
+        "chooserUrls": {"colourChooser": reverse("wagtailcolourpicker:chooser")},
     }
 
     features.register_editor_plugin(
