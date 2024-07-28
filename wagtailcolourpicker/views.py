@@ -10,7 +10,7 @@ from wagtailcolourpicker.utils.colour import (
 def chooser(request):
     if request.method == "POST":
         form = ColourForm(request.POST)
-
+        print("form submitted", request)
         if form.is_valid():
 
             feature_name = ""

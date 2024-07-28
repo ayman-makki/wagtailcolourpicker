@@ -18,9 +18,7 @@ class TextColourSource extends React.Component {
     $(document.body).on("hidden.bs.modal", this.onClose);
     this.workflow = ModalWorkflow({
       url: this.props.entityType.chooserUrls.colourChooser,
-      onload: COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS(
-        this.props.entityType.chooserUrls.colourChooser
-      ),
+      onload: COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS,
       responses: {
         colourChosen: this.onChosen,
       },
