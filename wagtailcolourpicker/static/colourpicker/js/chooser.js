@@ -1,5 +1,5 @@
 // Object containing handlers for different modal states
-COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = (url) => {
+COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = (url) => ({
   // Handler for the 'chooser' state
   chooser: function (modal, jsonData) {
     console.log(jsonData);
@@ -38,4 +38,4 @@ COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS = (url) => {
     // Close the modal
     modal.close();
   },
-};
+});
