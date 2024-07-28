@@ -1,4 +1,4 @@
-from django.urls import reverse, path, include
+from django.urls import reverse_lazy, path, include
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from django.templatetags.static import static
@@ -47,7 +47,7 @@ def register_textcolour_feature(features):
         "type": type_,
         "icon": get_setting("ICON"),
         "description": _("Text Colour"),
-        "chooserUrls": {"colourChooser": reverse("wagtailcolourpicker:chooser")},
+        "chooserUrls": {"colourChooser": reverse_lazy("wagtailcolourpicker:chooser")},
     }
 
     features.register_editor_plugin(
