@@ -13,11 +13,11 @@ class TextColourSource extends React.Component {
 
   componentDidMount() {
     console.log("mounted");
-    console.log(this, this.props, chooserUrl, chooserUrls);
+    console.log(this.props);
 
     $(document.body).on("hidden.bs.modal", this.onClose);
     this.workflow = ModalWorkflow({
-      url: "/cms/wagtailcolourpicker/chooser/",
+      url: this.props.entityType.chooserUrls.colourChooser,
       onload: COLOURPICKER_CHOOSER_MODAL_ONLOAD_HANDLERS,
       responses: {
         colourChosen: this.onChosen,

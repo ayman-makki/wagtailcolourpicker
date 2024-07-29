@@ -32,7 +32,7 @@ def chooser(request):
             )
     else:
         form = ColourForm()
-    print(form)
+
     return render_modal_workflow(
         request,
         "colourpicker/chooser/chooser.html",
